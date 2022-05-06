@@ -1,8 +1,10 @@
 package pl.transport.backend.data.assortment;
 
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 @Value
+@EqualsAndHashCode(callSuper = true)
 public class LongTimeTicket extends TicketType {
 
 	int validitySeconds;
