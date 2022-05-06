@@ -22,7 +22,7 @@ public class TicketController {
 	}
 
 	@GetMapping("/{id}/check")
-	public boolean checkTicket(@PathVariable long id, @RequestBody String routeNumber) {
+	public boolean checkTicket(@PathVariable long id, @RequestParam String routeNumber) {
 		return ticketService.getById(id).map(t -> t.isValid(routeNumber)).orElse(false);
 	}
 }
