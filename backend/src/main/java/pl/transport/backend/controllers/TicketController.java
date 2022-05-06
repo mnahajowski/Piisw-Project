@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.transport.backend.data.tickets.Ticket;
 import pl.transport.backend.services.TicketService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("ticket")
 public class TicketController {
@@ -17,7 +19,7 @@ public class TicketController {
 	}
 
 	@GetMapping("")
-	public Iterable<Ticket> getAll() {
+	public List<Ticket> getAll() {
 		return ticketService.getAll();
 	}
 
