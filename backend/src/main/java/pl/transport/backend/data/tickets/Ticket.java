@@ -11,4 +11,6 @@ public abstract class Ticket {
 	@GeneratedValue
 	@Id
 	private Long id;
+
+	public abstract boolean isValid(String routeNumber);
 }
