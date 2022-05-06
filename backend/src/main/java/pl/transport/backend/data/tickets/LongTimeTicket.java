@@ -23,9 +23,9 @@ public class LongTimeTicket extends Ticket {
 	Integer validitySeconds;
 
 	@Override
-	public boolean isValid(String routeNumber) {
+	public boolean isValid(String routeNumber, LocalDateTime atTime) {
 		if (startTime == null) return false;
 
-		return startTime.plusSeconds(validitySeconds).isAfter(LocalDateTime.now());
+		return startTime.plusSeconds(validitySeconds).isAfter(atTime);
 	}
 }

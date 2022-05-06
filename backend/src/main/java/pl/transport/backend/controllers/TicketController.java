@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.transport.backend.data.tickets.Ticket;
 import pl.transport.backend.services.TicketService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,8 @@ public class TicketController {
 
 	@GetMapping("/{id}/check")
 	public boolean checkTicket(@PathVariable long id, @RequestParam String routeNumber) {
-		return ticketService.getById(id).map(t -> t.isValid(routeNumber)).orElse(false);
+		return ticketService.getById(id)
+				.map(t -> t.isValid(routeNumber, LocalDateTime.now()))
+				.orElse(false);
 	}
 }

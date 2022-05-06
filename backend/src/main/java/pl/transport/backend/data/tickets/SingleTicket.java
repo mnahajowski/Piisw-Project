@@ -24,9 +24,9 @@ public class SingleTicket extends Ticket {
 	String validationRouteNumber;
 
 	@Override
-	public boolean isValid(String routeNumber) {
+	public boolean isValid(String routeNumber, LocalDateTime atTime) {
 		if (validationTime == null || validationRouteNumber == null) return false;
 
-		return validationTime.isBefore(LocalDateTime.now()) && validationRouteNumber.equals(routeNumber);
+		return validationTime.isBefore(atTime) && validationRouteNumber.equals(routeNumber);
 	}
 }

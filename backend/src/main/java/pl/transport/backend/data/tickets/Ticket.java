@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -14,5 +15,5 @@ public abstract class Ticket {
 	@Id
 	private Long id;
 
-	public abstract boolean isValid(String routeNumber);
+	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
 }
