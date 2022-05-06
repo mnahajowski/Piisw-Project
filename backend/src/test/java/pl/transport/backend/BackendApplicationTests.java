@@ -67,7 +67,7 @@ class BackendApplicationTests {
 		assertFalse(singleTicketRoute.isValid("10", LocalDateTime.now()));
 
 		// WHEN
-		ticketValidator.validate(singleTicketRoute, LocalDateTime.now().minusMinutes(1));
+		singleTicketRoute.validate(ticketValidator, LocalDateTime.now().minusMinutes(1));
 
 		// THEN
 		assertFalse(singleTicketRoute.isValid("11", LocalDateTime.now()));

@@ -26,15 +26,4 @@ public class TicketValidator {
     @Column(nullable = false)
     private String routeNumber;
 
-    public void validate(Ticket ticket, LocalDateTime validationTime) {
-
-        if (ticket instanceof SingleTicket) {
-            ((SingleTicket) ticket).setValidationRouteNumber(this.routeNumber);
-            ((SingleTicket) ticket).setValidationTime(validationTime);
-        }
-        else if (ticket instanceof TimeTicket)
-            ((TimeTicket) ticket).setValidationTime(validationTime);
-        else if (ticket instanceof LongTimeTicket)
-            ((LongTimeTicket) ticket).setStartTime(validationTime);
-    }
 }

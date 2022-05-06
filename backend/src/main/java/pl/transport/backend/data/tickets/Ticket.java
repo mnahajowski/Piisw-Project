@@ -2,6 +2,7 @@ package pl.transport.backend.data.tickets;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
+import pl.transport.backend.data.validator.TicketValidator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,4 +17,5 @@ public abstract class Ticket {
 	private Long id;
 
 	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
+	public abstract void validate(TicketValidator ticketValidator, LocalDateTime validationTime);
 }
