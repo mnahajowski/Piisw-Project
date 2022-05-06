@@ -16,7 +16,7 @@ public class TicketController {
 		this.ticketService = ticketService;
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	public Iterable<Ticket> getAll() {
 		return ticketService.getAll();
 	}

@@ -18,7 +18,7 @@ public class TicketAssortmentController {
 		this.assortmentService = assortmentService;
 	}
 
-	@GetMapping("/*")
+	@GetMapping("")
 	public TicketAssortment getTicketAssortment() {
 		return assortmentService.getTicketAssortment();
 	}
