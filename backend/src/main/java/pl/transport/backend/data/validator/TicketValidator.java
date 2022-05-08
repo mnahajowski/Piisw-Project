@@ -23,6 +23,7 @@ public class TicketValidator {
     @GeneratedValue
     @Id
     private Long id;
+
     @Column(nullable = false)
     private String routeNumber;
 
