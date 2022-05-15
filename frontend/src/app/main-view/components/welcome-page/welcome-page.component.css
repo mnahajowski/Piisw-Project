@@ -1,0 +1,112 @@
+#main-image {
+  width: 100%;
+  height: 100vh;
+  background: url(src/assets/img/bus_background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  z-index: 1;
+}
+
+#theme-main {
+  margin-bottom: 20px;
+}
+
+.mask-image {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 2;
+}
+
+.main-greetings-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 300 24px "Roboto";
+  color: white;
+  z-index: 3;
+}
+.main-greetings-text p {
+  font: italic 300 20px "Roboto Condensed";
+  margin-top: 15px;
+}
+.empty-box {
+  width: 100%;
+  height: 100vh;
+}
+html body [data-ca3_iconfont="ETmodules"]::before {
+  font-family: "ETmodules", serif;
+}
+[data-ca3_icon]::before {
+  font-weight: normal;
+  content: attr(data-ca3_icon);
+}
+.ca3-scroll-down-arrow {
+  background-image: url(src/assets/img/down-arrow.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.ca3-scroll-down-link {
+  cursor: pointer;
+  height: 60px;
+  width: 80px;
+  margin: 0 0 0 -40px;
+  line-height: 60px;
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  color: #fff;
+  text-align: center;
+  font-size: 70px;
+  z-index: 2;
+  text-decoration: none;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  -webkit-animation: ca3_fade_move_down 3s ease-in-out infinite;
+  -moz-animation: ca3_fade_move_down 3s ease-in-out infinite;
+  animation: ca3_fade_move_down 3s ease-in-out infinite;
+}
+@-webkit-keyframes ca3_fade_move_down {
+  0% {
+    -webkit-transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+@-moz-keyframes ca3_fade_move_down {
+  0% {
+    -moz-transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+@keyframes ca3_fade_move_down {
+  0% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+
