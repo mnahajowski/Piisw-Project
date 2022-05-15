@@ -1,0 +1,58 @@
+nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  background-color: #be2121;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+nav ul {
+  margin-left: 0;
+  padding-left: 0;
+  padding-top: 16px;
+  padding-right: 32px;
+}
+nav a {
+  width: auto;
+  padding: 10px;
+  text-align: center;
+  font: 500 24px "Roboto";
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  position: relative;
+  margin-top: 32px;
+  background-color: #be2121;
+  height: 50px;
+  width: 100%;
+}
+footer p {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 14px;
+}
+
+#app-name {
+  /*font-family: "Footlight MT Light", serif*/
+  padding-top: 10px;
+  font-family: Gabriola, serif;
+  font-size: 56px;
+}
+
+nav a:hover {
+  color: gray;
+}
+
+#app-name {
+  pointer-events: none;
+}

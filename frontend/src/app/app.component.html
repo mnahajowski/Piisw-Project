@@ -1,4 +1,13 @@
-<section class="bg-primary p-3">
-  <h1 class="text-light">Bus app</h1>
-</section>
+<nav>
+  <ul>
+  <a id="app-name"><i>myTicket</i></a>
+  </ul>
+  <ul>
+  <a [routerLink]="['']">Strona główna</a>
+  <a [routerLink]="['/ticket']">Bilety</a>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
+<footer>
+  <p>&copy; Marcin Nahajowski Piotr Wojnarowski 2022</p>
+</footer>

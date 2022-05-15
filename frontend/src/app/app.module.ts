@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TicketsModule} from "./tickets/tickets.module";
+import {MainViewModule} from "./main-view/mainView.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {TicketsModule} from "./tickets/tickets.module";
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    TicketsModule
+    TicketsModule,
+    MainViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
