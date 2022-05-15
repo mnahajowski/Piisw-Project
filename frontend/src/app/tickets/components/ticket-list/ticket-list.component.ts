@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ Ticket } from '../../models/ticket'
 import {ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-ticket-list',
@@ -18,6 +19,7 @@ export class TicketListComponent implements OnInit{
     this.tickets = this.route.snapshot.data['tickets'];
     console.log('--- book ---');
     console.log(this.tickets);
+
   }
   // ngOnInit(): void {
   //   console.log(this.tickets)
