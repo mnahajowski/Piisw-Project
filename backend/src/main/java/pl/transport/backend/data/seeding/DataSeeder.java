@@ -41,7 +41,7 @@ public class DataSeeder implements CommandLineRunner {
 				new LongTimeTicket(LocalDateTime.now(), 30 * 60 * 60 * 24)
 		));
 
-		var passenger = new Passenger(List.of(validTime, invalidTime));
-		userRepository.saveAll(List.of(new Ticketer(), passenger));
+		var passenger = new Passenger("user", "{noop}user", List.of(validTime, invalidTime));
+		userRepository.saveAll(List.of(new Ticketer("ticketer", "{noop}ticketer"), passenger));
 	}
 }

@@ -19,4 +19,9 @@ public class Passenger extends User {
 
 	@OneToMany
 	private List<Ticket> tickets;
+
+	public Passenger(String username, String password, List<Ticket> tickets) {
+		super(username, password);
+		this.tickets = tickets;
+	}
 }

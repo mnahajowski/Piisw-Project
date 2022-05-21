@@ -7,6 +7,7 @@ import pl.transport.backend.repositories.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,5 +23,9 @@ public class UserService {
 		var users = new ArrayList<User>();
 		userRepository.findAll().forEach(users::add);
 		return users;
+	}
+
+	public Optional<User> getByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 }
