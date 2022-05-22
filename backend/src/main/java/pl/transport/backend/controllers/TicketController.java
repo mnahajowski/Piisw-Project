@@ -2,6 +2,7 @@ package pl.transport.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.transport.backend.data.assortment.TicketType;
 import pl.transport.backend.data.tickets.Ticket;
 import pl.transport.backend.services.TicketService;
 
@@ -29,5 +30,10 @@ public class TicketController {
 		return ticketService.getById(id)
 				.map(t -> t.isValid(routeNumber, LocalDateTime.now()))
 				.orElse(false);
+	}
+
+	@PostMapping("")
+	public Ticket buyTicket(@RequestBody TicketType ticketType) {
+		return ticketService.buyTicket(ticketType).orElseThrow(() -> new IllegalArgumentException("Invalid ticket type"));
 	}
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.transport.backend.data.assortment.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,5 +39,10 @@ public class TicketAssortmentService {
 		return new TicketAssortment(
 				normalTickets.stream().flatMap(t -> Stream.of(t, discountTicket(t))).collect(Collectors.toList())
 		);
+	}
+
+	public Optional<TicketType> verifyType(TicketType type) {
+		if (getTicketAssortment().getTicketTypes().contains(type)) return Optional.of(type);
+		return Optional.empty();
 	}
 }
