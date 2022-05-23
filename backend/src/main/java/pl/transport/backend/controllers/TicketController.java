@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/ticket")
+@RequestMapping("ticket")
 public class TicketController {
 
 	private final TicketService ticketService;
