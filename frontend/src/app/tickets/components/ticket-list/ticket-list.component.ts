@@ -55,6 +55,7 @@ export class TicketListComponent implements OnInit{
     localStorage.removeItem("time");
     localStorage.removeItem("prize");
     localStorage.removeItem("discount");
+    localStorage.removeItem("ticket");
 
   }
 
@@ -113,8 +114,12 @@ export class TicketListComponent implements OnInit{
     return null;
   }
 
-  saveData(ticketType: String, content: [Number, String, Number]) {
+  saveData(ticket: any, ticketType: String, content: [Number, String, Number]) {
     console.log(content);
+    console.log("ticket");
+    console.log(ticket);
+    // @ts-ignore
+    localStorage.setItem("ticket", JSON.stringify(ticket));
     // @ts-ignore
     localStorage.setItem("prize", JSON.parse(content[0]));
     // @ts-ignore

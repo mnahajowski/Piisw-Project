@@ -12,7 +12,7 @@
 <!--          </div>-->
           <p class="card-text">Cena: {{(ticket.price/100).toFixed(2)}}</p>
 <!--          <a href="#" class="btn btn-primary">Go somewhere</a>-->
-          <button class="btn btn-primary" (click)="saveData(ticketType, [ticket.price, getPolishDiscount(ticket.discounted), getTime(ticket)])" [routerLink]="[getTicketTypeFormComponent(ticketType)]">Kup bilet</button>
+          <button class="btn btn-primary" (click)="saveData(ticket, ticketType, [ticket.price, getPolishDiscount(ticket.discounted), getTime(ticket)])" [routerLink]="[getTicketTypeFormComponent(ticketType)]">Kup bilet</button>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 <!--          <div class="card-text" *ngIf="ticketType === '.SingleTicket'">Numer autobusu: </div>-->
           <p class="card-text">Cena: {{(ticket.price/100).toFixed(2)}}</p>
 <!--          <a href="#" class="btn btn-primary">Go somewhere</a>-->
-          <button class="btn btn-primary" (click)="saveData(ticketType, [ticket.price, getPolishDiscount(ticket.discounted), getTime(ticket)])" [routerLink]="[getTicketTypeFormComponent(ticketType)]">Kup bilet</button>
+          <button class="btn btn-primary" (click)="saveData(ticket, ticketType, [ticket.price, getPolishDiscount(ticket.discounted), getTime(ticket)])" [routerLink]="[getTicketTypeFormComponent(ticketType)]">Kup bilet</button>
         </div>
       </div>
     </div>

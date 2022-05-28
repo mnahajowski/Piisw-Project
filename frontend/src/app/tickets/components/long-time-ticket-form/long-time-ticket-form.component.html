@@ -27,7 +27,7 @@
       <label *ngIf="model != null">Bilet będzie ważny do <b>{{getDate()}}</b></label>
     </div>
     <div class="form-buttons">
-      <button class="state buy-button">Kup bilet</button>
+      <button class="state buy-button" (click)="buyTicket()">Kup bilet</button>
     </div>
   </form>
 </div>
