@@ -32,6 +32,12 @@ public class TicketService {
 		return tickets;
 	}
 
+	public List<Ticket> getAllForAuthenticatedPassenger() {
+		var passenger = securityUserService.getAuthenticatedPassenger()
+				.orElseThrow(() -> new IllegalStateException("Tried to get tickets while not authenticated as a Passenger"));
+		return ticketRepository.findAllByOwner(passenger);
+	}
+
 	public Optional<Ticket> getById(long id) {
 		return ticketRepository.findById(id);
 	}

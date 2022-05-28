@@ -24,7 +24,7 @@ public class TicketController {
 
 	@GetMapping("")
 	public List<Ticket> getAll() {
-		return ticketService.getAll();
+		return ticketService.getAllForAuthenticatedPassenger();
 	}
 
 	@GetMapping("/{id}/check")
