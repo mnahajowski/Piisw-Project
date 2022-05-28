@@ -1,19 +1,23 @@
 package pl.transport.backend.data.assortment;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Value;
+import lombok.NoArgsConstructor;
 import pl.transport.backend.data.tickets.Ticket;
 
+import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
-@Value
+@Entity(name = "LongTimeTicketType")
+@Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class LongTimeTicket extends TicketType {
 
 	int validitySeconds;
 
 	public LongTimeTicket(String name, int price, boolean isDiscounted, int validitySeconds) {
-		super(name, price, isDiscounted);
+		super(null, name, price, isDiscounted);
 		this.validitySeconds = validitySeconds;
 	}
 

@@ -1,17 +1,22 @@
 package pl.transport.backend.data.assortment;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Value;
+import lombok.NoArgsConstructor;
 import pl.transport.backend.data.tickets.Ticket;
 
-@Value
+import javax.persistence.Entity;
+
+@Entity(name = "TimeTicketType")
+@Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class TimeTicket extends TicketType {
 
 	int validitySeconds;
 
 	public TimeTicket(String name, int price, boolean isDiscounted, int validitySeconds) {
-		super(name, price, isDiscounted);
+		super(null, name, price, isDiscounted);
 		this.validitySeconds = validitySeconds;
 	}
 
