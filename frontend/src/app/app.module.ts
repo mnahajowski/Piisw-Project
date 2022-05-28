@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TicketsModule} from "./tickets/tickets.module";
 import {MainViewModule} from "./main-view/mainView.module";
+import {HttpInterceptorService} from "./main-view/services/http-interceptor.service";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,10 @@ import {MainViewModule} from "./main-view/mainView.module";
     BrowserModule,
     AppRoutingModule,
     TicketsModule,
-    MainViewModule
+    MainViewModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

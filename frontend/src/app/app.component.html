@@ -3,11 +3,15 @@
   <a id="app-name"><i>myTicket</i></a>
   </ul>
   <ul>
-  <a [routerLink]="['']">Strona główna</a>
-  <a [routerLink]="['/ticket']">Bilety</a>
+    <a [routerLink]="['']">Strona główna</a>
+    <a [routerLink]="['/ticket']">Bilety</a>
+    <a *ngIf="getExpiration() === null" [routerLink]="['/login'] ">Zaloguj się</a>
+    <a *ngIf="getExpiration() === null" [routerLink]="['/register']">Zarejestruj się</a>
+    <a *ngIf="getExpiration() != null" [routerLink]="['/myAccount']">Moje konto</a>
+    <a *ngIf="getExpiration() != null" (click)="logout($event)">Wyloguj się</a>
   </ul>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet (activate)="checkExpiration()"></router-outlet>
 <footer>
   <p>&copy; Marcin Nahajowski Piotr Wojnarowski 2022</p>
 </footer>
