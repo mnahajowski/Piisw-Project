@@ -6,17 +6,17 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import {TicketListService} from "../services/ticket-list.service";
-import {Ticket} from "../models/ticket";
+import {Assortment} from "../models/assortment";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TicketListResolver implements Resolve<Ticket[]> {
+export class TicketListResolver implements Resolve<Assortment> {
 
   constructor(private readonly ticketListService: TicketListService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Ticket[]> {
-    return this.ticketListService.getAllBooks();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Assortment> {
+    return this.ticketListService.getAllTickets();
   }
 }

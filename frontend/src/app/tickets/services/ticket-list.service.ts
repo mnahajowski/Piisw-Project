@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Ticket} from "../models/ticket";
+import {Assortment} from "../models/assortment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,9 @@ export class TicketListService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getAllBooks(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>('/api/ticket');
+  getAllTickets(): Observable<Assortment> {
+    return this.http.get<Assortment>('/api/assortment');
   }
+
+  // getUserTickets()
 }
