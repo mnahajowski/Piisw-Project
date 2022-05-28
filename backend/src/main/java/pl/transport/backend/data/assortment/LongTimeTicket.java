@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import pl.transport.backend.data.tickets.Ticket;
 
 import javax.persistence.Entity;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.TimeZone;
 
 @Entity(name = "LongTimeTicketType")
 @Data
@@ -22,7 +25,14 @@ public class LongTimeTicket extends TicketType {
 	}
 
 	@Override
-	public Ticket create() {
-		return new pl.transport.backend.data.tickets.LongTimeTicket(LocalDateTime.now(), getValiditySeconds());
+	public Ticket create(Long startTime) {
+		// TODO disallow creation with start time too far in the past or future (- 5min?)
+		var time = LocalDateTime.ofInstant(Instant.ofEpochMilli(startTime), TimeZone.getDefault().toZoneId());
+		return new pl.transport.backend.data.tickets.LongTimeTicket(time, getValiditySeconds());
+	}
+
+	@Override
+	public boolean hasStartTime() {
+		return true;
 	}
 }

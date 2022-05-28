@@ -35,8 +35,14 @@ public class TicketController {
 	}
 
 	@PostMapping("")
-	public Ticket buyTicket(@RequestBody TicketType ticketType) {
-		return ticketService.buyTicket(ticketType)
+	public Ticket buyTicket(@RequestBody TicketType ticketType, @RequestParam(required = false) Long startTime) {
+		if (ticketType.hasStartTime() && startTime == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This type of ticket needs a start time specified.");
+		} else if(!ticketType.hasStartTime() && startTime != null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This type of ticket must not have a start time specified.");
+		}
+
+		return ticketService.buyTicket(ticketType, startTime)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid ticket type"));
 	}
 }

@@ -18,7 +18,12 @@ public class SingleTicket extends TicketType {
 	}
 
 	@Override
-	public Ticket create() {
+	public Ticket create(Long startTime) {
 		return new pl.transport.backend.data.tickets.SingleTicket();
+	}
+
+	@Override
+	public boolean hasStartTime() {
+		return false;
 	}
 }

@@ -42,11 +42,11 @@ public class TicketService {
 		return ticketRepository.findById(id);
 	}
 
-	public Optional<Ticket> buyTicket(TicketType type) {
+	public Optional<Ticket> buyTicket(TicketType type, Long startTime) {
 		var passenger = securityUserService.getAuthenticatedPassenger()
 				.orElseThrow(() -> new IllegalStateException("Tried to buy ticket while not authenticated as a Passenger"));
 
-		var maybeTicket = ticketAssortmentService.verifyType(type).map(TicketType::create);
+		var maybeTicket = ticketAssortmentService.verifyType(type).map(tt -> tt.create(startTime));
 		maybeTicket.ifPresent(t -> {
 			t.setOwner(passenger);
 			ticketRepository.save(t);

@@ -21,7 +21,12 @@ public class TimeTicket extends TicketType {
 	}
 
 	@Override
-	public Ticket create() {
+	public Ticket create(Long startTime) {
 		return new pl.transport.backend.data.tickets.TimeTicket(null, getValiditySeconds());
+	}
+
+	@Override
+	public boolean hasStartTime() {
+		return false;
 	}
 }

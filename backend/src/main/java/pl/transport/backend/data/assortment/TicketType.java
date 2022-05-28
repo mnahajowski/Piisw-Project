@@ -28,5 +28,7 @@ public abstract class TicketType {
 	int price;
 	boolean isDiscounted;
 
-	public abstract Ticket create();
+	public abstract Ticket create(Long startTime);
+
+	public abstract boolean hasStartTime();
 }
