@@ -1,7 +1,9 @@
 package pl.transport.backend.data.tickets;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
+import pl.transport.backend.data.users.Passenger;
 import pl.transport.backend.data.validator.TicketValidator;
 
 import javax.persistence.*;
@@ -15,6 +17,11 @@ public abstract class Ticket {
 	@GeneratedValue
 	@Id
 	private Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	@JsonIgnore
+	private Passenger owner;
 
 	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
 	public abstract void validate(TicketValidator ticketValidator, LocalDateTime validationTime);

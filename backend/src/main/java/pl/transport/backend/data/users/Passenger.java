@@ -17,11 +17,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Passenger extends User {
 
-	@OneToMany
+	@OneToMany(mappedBy = "owner")
 	private List<Ticket> tickets;
 
-	public Passenger(String username, String password, List<Ticket> tickets) {
+	public Passenger(String username, String password) {
 		super(username, password);
-		this.tickets = tickets;
 	}
 }

@@ -10,23 +10,19 @@ import pl.transport.backend.repositories.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class TicketService {
 
 	private final TicketRepository ticketRepository;
 	private final SecurityUserService securityUserService;
-	private final UserRepository userRepository;
 	private final TicketAssortmentService ticketAssortmentService;
 
 	@Autowired
 	public TicketService(TicketRepository ticketRepository, SecurityUserService securityUserService,
-	                     UserRepository userRepository, TicketAssortmentService ticketAssortmentService) {
+	                     TicketAssortmentService ticketAssortmentService) {
 		this.ticketRepository = ticketRepository;
 		this.securityUserService = securityUserService;
-		this.userRepository = userRepository;
 		this.ticketAssortmentService = ticketAssortmentService;
 	}
 
@@ -46,9 +42,8 @@ public class TicketService {
 
 		var maybeTicket = ticketAssortmentService.verifyType(type).map(TicketType::create);
 		maybeTicket.ifPresent(t -> {
+			t.setOwner(passenger);
 			ticketRepository.save(t);
-			passenger.setTickets(Stream.concat(passenger.getTickets().stream(), Stream.of(t)).collect(Collectors.toList()));
-			userRepository.save(passenger);
 		});
 		return maybeTicket;
 	}
