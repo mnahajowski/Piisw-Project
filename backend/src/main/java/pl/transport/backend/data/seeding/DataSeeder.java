@@ -31,9 +31,11 @@ public class DataSeeder implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		var passenger = new Passenger("user", "{noop}user");
+		var passenger2 = new Passenger("user2", "{noop}user2");
+
 		userRepository.saveAll(List.of(
 				new Ticketer("ticketer", "{noop}ticketer"),
-				passenger
+				passenger, passenger2
 		));
 
 		ticketRepository.saveAll(Stream.of(
@@ -45,5 +47,10 @@ public class DataSeeder implements CommandLineRunner {
 				new LongTimeTicket(LocalDateTime.now().plusDays(2), 30 * 60 * 60 * 24),
 				new LongTimeTicket(LocalDateTime.now(), 30 * 60 * 60 * 24)
 		).peek(t -> t.setOwner(passenger)).collect(Collectors.toList()));
+
+		ticketRepository.saveAll(Stream.of(
+				new SingleTicket(null, null),
+				new SingleTicket(LocalDateTime.now(), "1032")
+		).peek(t -> t.setOwner(passenger2)).collect(Collectors.toList()));
 	}
 }
