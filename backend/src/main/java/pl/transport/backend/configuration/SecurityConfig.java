@@ -41,6 +41,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeHttpRequests((authorize) -> authorize
+						.antMatchers("/validate").permitAll()
 						.anyRequest().authenticated()
 				)
 				.csrf((csrf) -> csrf.disable()) // FIXME

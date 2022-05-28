@@ -1,13 +1,10 @@
 package pl.transport.backend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-@AllArgsConstructor
-@Data
-@NoArgsConstructor
+@Value
 public class TicketValidationDto {
 
-    private String routeNumber;
+    long ticketId;
+    String routeNumber;
 }

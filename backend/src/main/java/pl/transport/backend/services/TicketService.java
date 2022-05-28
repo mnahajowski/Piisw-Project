@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.transport.backend.data.assortment.TicketType;
 import pl.transport.backend.data.tickets.Ticket;
+import pl.transport.backend.dto.TicketValidationResult;
 import pl.transport.backend.repositories.TicketRepository;
-import pl.transport.backend.repositories.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,5 +53,17 @@ public class TicketService {
 			ticketRepository.save(t);
 		});
 		return maybeTicket;
+	}
+
+	public TicketValidationResult validate(long ticketId, String routeNumber) {
+		var ticket = ticketRepository.findById(ticketId).orElse(null);
+		if (ticket == null) return TicketValidationResult.NOT_FOUND;
+
+		if (ticket.validate(routeNumber, LocalDateTime.now())) {
+			ticketRepository.save(ticket);
+			return TicketValidationResult.SUCCESS;
+		}
+
+		return TicketValidationResult.ALREADY_VALIDATED;
 	}
 }
