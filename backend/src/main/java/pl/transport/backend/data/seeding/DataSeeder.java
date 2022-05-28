@@ -2,6 +2,7 @@ package pl.transport.backend.data.seeding;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.transport.backend.data.tickets.LongTimeTicket;
 import pl.transport.backend.data.tickets.SingleTicket;
@@ -21,20 +22,22 @@ public class DataSeeder implements CommandLineRunner {
 
 	private final TicketRepository ticketRepository;
 	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public DataSeeder(TicketRepository ticketRepository, UserRepository userRepository) {
+	public DataSeeder(TicketRepository ticketRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.ticketRepository = ticketRepository;
 		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		var passenger = new Passenger("user", "{noop}user");
-		var passenger2 = new Passenger("user2", "{noop}user2");
+		var passenger = new Passenger("user", passwordEncoder.encode("user"));
+		var passenger2 = new Passenger("user2", passwordEncoder.encode("user2"));
 
 		userRepository.saveAll(List.of(
-				new Ticketer("ticketer", "{noop}ticketer"),
+				new Ticketer("ticketer", passwordEncoder.encode("ticketer")),
 				passenger, passenger2
 		));
 
