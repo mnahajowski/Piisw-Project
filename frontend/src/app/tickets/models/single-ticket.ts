@@ -1,6 +1,5 @@
-import {Ticket} from "./ticket";
+import {TicketType} from "./ticket-type";
 
-export interface SingleTicket extends Ticket{
-  validationTime: Date;
-  validationRouteNumber: String;
+export interface SingleTicket extends TicketType{
+
 }
