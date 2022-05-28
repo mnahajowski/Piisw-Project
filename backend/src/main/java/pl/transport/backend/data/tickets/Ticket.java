@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import pl.transport.backend.data.users.Passenger;
-import pl.transport.backend.data.validator.TicketValidator;
+import pl.transport.backend.dto.TicketValidationDto;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,5 +24,5 @@ public abstract class Ticket {
 	private Passenger owner;
 
 	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
-	public abstract void validate(TicketValidator ticketValidator, LocalDateTime validationTime);
+	public abstract boolean validate(String routeNumber, LocalDateTime validationTime);
 }

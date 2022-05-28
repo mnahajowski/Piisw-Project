@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import pl.transport.backend.data.validator.TicketValidator;
+import pl.transport.backend.dto.TicketValidationDto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class LongTimeTicket extends Ticket {
 	}
 
 	@Override
-	public void validate(TicketValidator ticketValidator, LocalDateTime validationTime) {
-		this.setStartTime(validationTime);
+	public boolean validate(String routeNumber, LocalDateTime validationTime) {
+		return false; // No operation, can't be validated
 	}
 }

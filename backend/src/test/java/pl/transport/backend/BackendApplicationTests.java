@@ -1,24 +1,18 @@
 package pl.transport.backend;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import pl.transport.backend.data.tickets.LongTimeTicket;
 import pl.transport.backend.data.tickets.SingleTicket;
 import pl.transport.backend.data.tickets.TimeTicket;
-import pl.transport.backend.data.validator.TicketValidator;
 import pl.transport.backend.repositories.TicketRepository;
 import pl.transport.backend.services.TicketAssortmentService;
 import pl.transport.backend.services.TicketService;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +28,6 @@ class BackendApplicationTests {
 	@Mock
 	private TicketRepository ticketRepository;
 
-	private final TicketValidator ticketValidator = new TicketValidator(1L, "10");;
 	@BeforeEach
 	void setUp() {
 		MockitoAnnotations.openMocks(this);
@@ -67,7 +60,7 @@ class BackendApplicationTests {
 		assertFalse(singleTicketRoute.isValid("10", LocalDateTime.now()));
 
 		// WHEN
-		singleTicketRoute.validate(ticketValidator, LocalDateTime.now().minusMinutes(1));
+		singleTicketRoute.validate("10", LocalDateTime.now().minusMinutes(1));
 
 		// THEN
 		assertFalse(singleTicketRoute.isValid("11", LocalDateTime.now()));
