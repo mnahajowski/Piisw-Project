@@ -1,0 +1,21 @@
+<div class="wrapper-form">
+<form [formGroup]="form" class="login">
+  <fieldset>
+    <legend>Zaloguj się</legend>
+      <input name="email" formControlName="email" placeholder="Email" autofocus>
+    <i class="fa fa-user"></i>
+      <input name="password" formControlName="password"
+             type="password" placeholder="Hasło">
+    <i class="fa fa-key"></i>
+    <p class="login-signup">Jeszcze nie masz konta? &nbsp;<a (click)="register($event)">Zarejestuj się</a></p>
+
+  </fieldset>
+  <div class="form-buttons">
+    <button class="state"
+            (click)="login()">Zaloguj się</button>
+
+  </div>
+
+</form>
+</div>
+
