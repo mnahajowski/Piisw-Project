@@ -11,7 +11,7 @@ export class TicketListService {
   constructor(private readonly http: HttpClient) { }
 
   getAllTickets(): Observable<Assortment> {
-    return this.http.get<Assortment>('/api/ticket');
+    return this.http.get<Assortment>('/api/assortment');
   }
 
   // getUserTickets()
