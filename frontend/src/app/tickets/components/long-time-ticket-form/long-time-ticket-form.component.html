@@ -1,0 +1,35 @@
+
+<div class="wrapper-form">
+  <form class="long-time-ticket" [formGroup]="myGroup">
+    <fieldset>
+      <legend>Kup bilet długoterminowy</legend>
+      <div class="form-content">
+        <label>Typ biletu: <b>{{discount}}</b></label>
+        <br>
+        <label>Cena: <b>{{(prize.valueOf()/100).toFixed(2)}}</b></label>
+        <br>
+        <label>Czas trwania biletu: <b>{{(time.valueOf()/60/60/24)}} dni</b></label>
+        <br>
+        <br>
+        <i class="fa fa-user"></i>
+        <label>Podaj datę rozpoczęcia wazności biletu</label>
+        <br>
+      </div>
+    </fieldset>
+    <div class="col-12">
+      <div class="input-group" >
+        <input class="form-control" formControlName="dateJoined" placeholder="yyyy-mm-dd"
+               name="dp" [(ngModel)]="model" (ngModelChange)="updateMyDate($event)" ngbDatepicker #d="ngbDatepicker">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+      </div>
+      <br>
+      <br>
+      <label *ngIf="model != null">Bilet będzie ważny do <b>{{getDate()}}</b></label>
+    </div>
+    <div class="form-buttons">
+      <button class="state buy-button">Kup bilet</button>
+    </div>
+  </form>
+</div>
+
+

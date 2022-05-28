@@ -1,0 +1,24 @@
+<div class="wrapper-form">
+  <form class="login">
+    <fieldset>
+      <legend>Kup bilet jednorazowy</legend>
+      <div class="form-content">
+        <label>Typ biletu: <b>{{discount}}</b></label>
+        <br>
+        <label>Cena: <b>{{(prize.valueOf()/100).toFixed(2)}}</b></label>
+        <br>
+        <br>
+        <i class="fa fa-user"></i>
+        <label>Podaj numer linii autobusowej</label>
+        <input name="busNumber" formControlName="busNumber" placeholder="Numer linii autobusowej" autofocus>
+        <i class="fa fa-user"></i>
+      </div>
+
+    </fieldset>
+    <div class="form-buttons">
+<!--      <button class="state" (onclick)="buyTicket()">Kup bilet</button>-->
+      <button class="state">Kup bilet</button>
+    </div>
+  </form>
+</div>
+
