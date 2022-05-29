@@ -1,7 +1,7 @@
-export interface TicketType{
-  type: String;
-  name : String;
-  price : number;
-  discounted : boolean;
-  validitySeconds: Number;
+export interface TicketType {
+  type: string;
+  name: string;
+  price: number;
+  discounted: boolean;
+  validitySeconds: number;
 }

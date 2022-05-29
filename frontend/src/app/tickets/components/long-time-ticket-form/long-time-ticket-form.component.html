@@ -8,7 +8,7 @@
         <br>
         <label>Cena: <b>{{(price.valueOf()/100).toFixed(2)}}</b></label>
         <br>
-        <label>Czas trwania biletu: <b>{{(time.valueOf()/60/60/24)}} dni</b></label>
+        <label>Czas trwania biletu: <b>{{ localization.getLocalizedDuration(time) }}</b></label>
         <br>
         <br>
         <i class="fa fa-user"></i>

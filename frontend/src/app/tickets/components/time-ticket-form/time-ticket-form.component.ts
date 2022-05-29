@@ -16,13 +16,13 @@ import { LocalizationService } from 'src/app/services/localization.service';
 export class TimeTicketFormComponent implements OnInit {
 
   ticket: TicketType;
-  time: Number;
+  time: number;
   discount: String | null;
   price: Number;
   form:FormGroup;
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
-    private localization: LocalizationService) {
+    readonly localization: LocalizationService) {
     this.ticket = <TicketType>router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);

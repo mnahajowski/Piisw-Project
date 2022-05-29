@@ -29,4 +29,17 @@ export class LocalizationService {
     else
       return 'Normalny';
   }
+
+  getLocalizedDuration(seconds: number): string {
+    var minutes = seconds / 60;
+    var hours = minutes / 60;
+    if (hours > 48) {
+      var days = hours / 24;
+      return `${days} dni`;
+    } else if (minutes > 60) {
+      return `${hours} godz.`;
+    } else {
+      return `${minutes} min`;
+    }
+  }
 }

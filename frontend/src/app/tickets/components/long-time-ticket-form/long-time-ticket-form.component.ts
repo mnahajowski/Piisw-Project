@@ -15,7 +15,7 @@ import { LocalizationService } from 'src/app/services/localization.service';
 export class LongTimeTicketFormComponent implements OnInit {
 
   ticket: TicketType;
-  time: Number;
+  time: number;
   discount: String | null;
   price: Number;
   model: NgbDateStruct | undefined;
@@ -23,7 +23,7 @@ export class LongTimeTicketFormComponent implements OnInit {
   setData: any;
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
-    private localization: LocalizationService) {
+    readonly localization: LocalizationService) {
     this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);

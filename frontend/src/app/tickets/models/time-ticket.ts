@@ -1,5 +1,5 @@
-import {TicketType} from "./ticket-type";
+import { TicketType } from "./ticket-type";
 
-export interface TimeTicket extends TicketType{
-  validitySeconds: Number;
+export interface TimeTicket extends TicketType {
+  validitySeconds: number;
 }
