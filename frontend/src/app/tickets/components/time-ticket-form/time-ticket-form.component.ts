@@ -40,7 +40,7 @@ export class TimeTicketFormComponent implements OnInit {
   }
 
   buyTicket() {
-    return this.http.post<TicketType>('/api/ticket', this.ticket).subscribe(t => console.log(t));
+    return this.http.post<TicketType>('/api/ticket', this.ticket).subscribe(t => alert(JSON.stringify(t)));
   }
 
 }

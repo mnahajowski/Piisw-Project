@@ -57,6 +57,6 @@ export class LongTimeTicketFormComponent implements OnInit {
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(t => console.log(t));
+    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(t => alert(JSON.stringify(t)));
   }
 }

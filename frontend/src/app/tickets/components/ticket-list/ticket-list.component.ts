@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {Assortment} from "../../models/assortment";
 import {TicketType} from "../../models/ticket-type";
@@ -9,6 +9,7 @@ import {TimeTicket} from "../../models/time-ticket";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { LocalizationService } from 'src/app/services/localization.service';
+import {AuthService} from "../../../main-view/services/auth.service";
 
 @Component({
   selector: 'app-ticket-list',
@@ -28,7 +29,7 @@ export class TicketListComponent implements OnInit{
   // longTimeTicketForm: FormGroup;
 
   constructor(private readonly route: ActivatedRoute, private modalService: NgbModal,
-    readonly localization: LocalizationService) {
+    readonly localization: LocalizationService, private authService: AuthService, private router: Router) {
     // this.singleTicketForm = this.fb.group({
     //   busNumber: ['',Validators.required, Validators.pattern("^[0-9]*$")]
     // });
@@ -87,5 +88,15 @@ export class TicketListComponent implements OnInit{
     } else {
       return 1;
     }
+  }
+
+  checkIfLoggedIn(ticket: TicketType) {
+    if (this.authService.isLoggedIn()) {
+      // @ts-ignore
+      this.router.navigateByUrl(this.getTicketTypeFormComponent(ticket.type), {state: ticket}).then(r => console.log(r));
+    } else if (this.authService.isLoggedOut()) {
+      this.router.navigate(["/login"]).then(r => console.log(r));
+    }
+
   }
 }
