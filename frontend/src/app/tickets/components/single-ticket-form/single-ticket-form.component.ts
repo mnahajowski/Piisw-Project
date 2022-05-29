@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TicketType} from "../../models/ticket-type";
 import {HttpClient} from "@angular/common/http";
 import { Router } from '@angular/router';
+import { LocalizationService } from 'src/app/services/localization.service';
 
 @Component({
   selector: 'app-single-ticket-form',
@@ -15,9 +16,9 @@ export class SingleTicketFormComponent implements OnInit {
   discount: String | null;
   price: Number;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private localization: LocalizationService) {
     this.ticket = <TicketType>router.getCurrentNavigation()?.extras.state;
-    this.discount = "" + this.ticket.discounted; // TODO polish discount
+    this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
   }
 

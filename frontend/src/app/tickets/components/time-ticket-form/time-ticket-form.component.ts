@@ -6,6 +6,7 @@ import {TicketListService} from "../../services/ticket-list.service";
 import {shareReplay, tap} from "rxjs";
 import {TicketType} from "../../models/ticket-type";
 import { Router } from '@angular/router';
+import { LocalizationService } from 'src/app/services/localization.service';
 
 @Component({
   selector: 'app-time-ticket-form',
@@ -20,10 +21,11 @@ export class TimeTicketFormComponent implements OnInit {
   price: Number;
   form:FormGroup;
 
-  constructor(private fb:FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
+    private localization: LocalizationService) {
     this.ticket = <TicketType>router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
-    this.discount = "" + this.ticket.discounted; // TODO polish discount
+    this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
     this.form = this.fb.group({
       discount: [''],

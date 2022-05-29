@@ -8,6 +8,7 @@ import {LongTimeTicket} from "../../models/long-time-ticket";
 import {TimeTicket} from "../../models/time-ticket";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { LocalizationService } from 'src/app/services/localization.service';
 
 @Component({
   selector: 'app-ticket-list',
@@ -26,7 +27,8 @@ export class TicketListComponent implements OnInit{
   // timeTicketForm: FormGroup;
   // longTimeTicketForm: FormGroup;
 
-  constructor(private readonly route: ActivatedRoute, private modalService: NgbModal) {
+  constructor(private readonly route: ActivatedRoute, private modalService: NgbModal,
+    readonly localization: LocalizationService) {
     // this.singleTicketForm = this.fb.group({
     //   busNumber: ['',Validators.required, Validators.pattern("^[0-9]*$")]
     // });
@@ -67,33 +69,6 @@ export class TicketListComponent implements OnInit{
   // ngOnInit(): void {
   //   console.log(this.tickets)
   // }
-
-  getPolishNameType(ticketType: String, isMulti:boolean) {
-    if (ticketType === '.SingleTicket') {
-      if (isMulti)
-        return 'Bilety jednorazowe';
-      return 'Bilet jednorazowy';
-    }
-    else if (ticketType === '.LongTimeTicket') {
-      if (isMulti)
-        return 'Bilety długototerminowe';
-      return 'Bilet długototerminowy';
-    }
-    else if (ticketType === '.TimeTicket') {
-      if (isMulti)
-        return 'Bilety czasowe';
-      return 'Bilet czasowy';
-    }
-    else
-      return null;
-  }
-
-  getPolishDiscount(isDiscount: boolean) {
-    if (isDiscount)
-      return 'Ulgowy';
-    else
-      return 'Normalny';
-  }
 
   getTicketTypeFormComponent(ticketType: String) {
     if (ticketType === '.SingleTicket') {

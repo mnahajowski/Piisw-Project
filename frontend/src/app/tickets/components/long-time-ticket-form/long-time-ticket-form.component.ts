@@ -5,6 +5,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {TicketType} from "../../models/ticket-type";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
+import { LocalizationService } from 'src/app/services/localization.service';
 
 @Component({
   selector: 'app-long-time-ticket-form',
@@ -21,10 +22,11 @@ export class LongTimeTicketFormComponent implements OnInit {
   myGroup: FormGroup;
   setData: any;
 
-  constructor(private fb:FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
+    private localization: LocalizationService) {
     this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
-    this.discount = "" + this.ticket.discounted; // TODO polish discount
+    this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
     const now = new Date();
     // const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate(), now.getHours());
