@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {TicketType} from "../../models/ticket-type";
@@ -12,6 +13,7 @@ import * as moment from "moment";
 })
 export class LongTimeTicketFormComponent implements OnInit {
 
+  ticket: TicketType;
   time: Number;
   discount: String | null;
   prize: Number;
@@ -19,14 +21,11 @@ export class LongTimeTicketFormComponent implements OnInit {
   myGroup: FormGroup;
   setData: any;
 
-  constructor(private fb:FormBuilder, private http: HttpClient) {
-    // @ts-ignore
-    this.time = JSON.parse(localStorage.getItem("time"));
-    this.discount = localStorage.getItem("discount");
-    // @ts-ignore
-    this.prize = JSON.parse(localStorage.getItem("prize"));
-    console.log(this.prize);
-    console.log(this.discount);
+  constructor(private fb:FormBuilder, private http: HttpClient, private router: Router) {
+    this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
+    this.time = this.ticket.validitySeconds;
+    this.discount = "" + this.ticket.discounted; // TODO polish discount
+    this.prize = this.ticket.price;
     const now = new Date();
     // const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate(), now.getHours());
     this.myGroup = new FormGroup({
@@ -52,12 +51,10 @@ export class LongTimeTicketFormComponent implements OnInit {
   }
 
   buyTicket() {
-    // @ts-ignore
-    let ticket = JSON.parse(localStorage.getItem("ticket"));
     let date: Date = new Date(this.setData.year, this.setData.month-1, this.setData.day);
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    return this.http.post<TicketType>('/api/ticket', ticket, {'params': params}).subscribe(t => console.log(t));
+    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(t => console.log(t));
   }
 }

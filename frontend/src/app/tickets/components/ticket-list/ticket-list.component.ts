@@ -49,14 +49,6 @@ export class TicketListComponent implements OnInit{
       }
 
     })
-    console.log(this.singleTickets);
-    console.log(this.timeTickets);
-    console.log(this.longTimeTickets);
-    localStorage.removeItem("time");
-    localStorage.removeItem("prize");
-    localStorage.removeItem("discount");
-    localStorage.removeItem("ticket");
-
   }
 
   getTicketType(ticket: TicketType) : Boolean{
@@ -114,20 +106,6 @@ export class TicketListComponent implements OnInit{
     return null;
   }
 
-  saveData(ticket: any, ticketType: String, content: [Number, String, Number]) {
-    console.log(content);
-    console.log("ticket");
-    console.log(ticket);
-    // @ts-ignore
-    localStorage.setItem("ticket", JSON.stringify(ticket));
-    // @ts-ignore
-    localStorage.setItem("prize", JSON.parse(content[0]));
-    // @ts-ignore
-    localStorage.setItem("discount", content[1]);
-    // @ts-ignore
-    localStorage.setItem("time", JSON.parse(content[2]));
-  }
-
   getTime(ticket: TicketType) {
     if (ticket.type === '.TimeTicket' || ticket.type === '.LongTimeTicket') {
       return ticket.validitySeconds;
@@ -135,7 +113,4 @@ export class TicketListComponent implements OnInit{
       return 1;
     }
   }
-
-
-
 }
