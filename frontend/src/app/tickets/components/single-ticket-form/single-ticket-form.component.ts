@@ -13,12 +13,12 @@ export class SingleTicketFormComponent implements OnInit {
 
   ticket: TicketType;
   discount: String | null;
-  prize: Number;
+  price: Number;
 
   constructor(private http: HttpClient, private router: Router) {
     this.ticket = <TicketType>router.getCurrentNavigation()?.extras.state;
     this.discount = "" + this.ticket.discounted; // TODO polish discount
-    this.prize = this.ticket.price;
+    this.price = this.ticket.price;
   }
 
   ngOnInit(): void {

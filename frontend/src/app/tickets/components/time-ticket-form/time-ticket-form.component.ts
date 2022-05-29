@@ -17,20 +17,20 @@ export class TimeTicketFormComponent implements OnInit {
   ticket: TicketType;
   time: Number;
   discount: String | null;
-  prize: Number;
+  price: Number;
   form:FormGroup;
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router) {
     this.ticket = <TicketType>router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = "" + this.ticket.discounted; // TODO polish discount
-    this.prize = this.ticket.price;
+    this.price = this.ticket.price;
     this.form = this.fb.group({
       discount: [''],
-      prize: [''],
+      price: [''],
       time: ['']
     });
-    console.log(this.prize);
+    console.log(this.price);
     console.log(this.discount);
   }
 

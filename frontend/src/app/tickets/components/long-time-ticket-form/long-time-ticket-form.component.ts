@@ -16,7 +16,7 @@ export class LongTimeTicketFormComponent implements OnInit {
   ticket: TicketType;
   time: Number;
   discount: String | null;
-  prize: Number;
+  price: Number;
   model: NgbDateStruct | undefined;
   myGroup: FormGroup;
   setData: any;
@@ -25,7 +25,7 @@ export class LongTimeTicketFormComponent implements OnInit {
     this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = "" + this.ticket.discounted; // TODO polish discount
-    this.prize = this.ticket.price;
+    this.price = this.ticket.price;
     const now = new Date();
     // const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate(), now.getHours());
     this.myGroup = new FormGroup({
