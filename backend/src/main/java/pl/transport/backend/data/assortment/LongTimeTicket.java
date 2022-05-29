@@ -27,7 +27,7 @@ public class LongTimeTicket extends TicketType {
 	@Override
 	public Ticket create(Long startTime) {
 		// TODO disallow creation with start time too far in the past or future (- 5min?)
-		var time = LocalDateTime.ofInstant(Instant.ofEpochMilli(startTime), TimeZone.getDefault().toZoneId());
+		var time = LocalDateTime.ofInstant(Instant.ofEpochSecond(startTime), TimeZone.getDefault().toZoneId());
 		return new pl.transport.backend.data.tickets.LongTimeTicket(time, getValiditySeconds());
 	}
 
