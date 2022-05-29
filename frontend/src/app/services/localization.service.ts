@@ -13,8 +13,8 @@ export class LocalizationService {
     }
     else if (ticketType === '.LongTimeTicket') {
       if (isMulti)
-        return 'Bilety długototerminowe';
-      return 'Bilet długototerminowy';
+        return 'Bilety długoterminowe';
+      return 'Bilet długoterminowy';
     }
     else if (ticketType === '.TimeTicket') {
       if (isMulti)
