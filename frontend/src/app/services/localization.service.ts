@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RegistrationResult } from '../main-view/models/registration-result';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,17 @@ export class LocalizationService {
       return `${hours} godz.`;
     } else {
       return `${minutes} min`;
+    }
+  }
+
+  getLocalizedRegistrationResult(result: RegistrationResult): string {
+    switch (result) {
+      case 'DUPLICATE_USERNAME':
+        return 'Istnieje już konto z taką nazwą.';
+      case 'PASSWORD_TOO_SHORT':
+        return 'Podano zbyt krótkie hasło.';
+      case 'SUCCESS':
+        return 'Pomyślnie utworzono konto.';
     }
   }
 }
