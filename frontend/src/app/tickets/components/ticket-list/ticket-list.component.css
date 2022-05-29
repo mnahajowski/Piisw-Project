@@ -76,6 +76,7 @@ figcaption {
   position: relative;
   border: solid #be2121 3px;
   border-radius: 25px;
+  margin-bottom: 25px;
 }
 
 .plan-type {
