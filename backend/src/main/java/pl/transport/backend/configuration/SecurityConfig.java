@@ -43,6 +43,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests((authorize) -> authorize
 						.antMatchers("/assortment").permitAll()
 						.antMatchers("/validate").permitAll()
+						.antMatchers("/register").permitAll()
 						.anyRequest().authenticated()
 				)
 				.csrf((csrf) -> csrf.disable()) // FIXME
