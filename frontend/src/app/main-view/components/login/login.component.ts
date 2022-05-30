@@ -27,12 +27,15 @@ export class LoginComponent {
 
     if (val.username && val.password) {
       this.authService.login(val.username, val.password)
-        .subscribe(
-          () => {
+        .subscribe({
+          complete: () => {
             console.log("User is logged in");
             this.router.navigateByUrl('/');
+          },
+          error: () => {
+            alert("Nieprawidłowa nazwa użytkownika lub hasło.");
           }
-        );
+        });
     }
   }
 
