@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {TicketType} from "../../models/ticket-type";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
@@ -23,7 +23,7 @@ export class LongTimeTicketFormComponent implements OnInit {
   setData: any;
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
-    readonly localization: LocalizationService) {
+    readonly localization: LocalizationService, private config: NgbDatepickerConfig) {
     this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
@@ -33,6 +33,14 @@ export class LongTimeTicketFormComponent implements OnInit {
     this.myGroup = new FormGroup({
       dateJoined: new FormControl()
     });
+
+    const current = new Date();
+    config.minDate = { year: current.getFullYear(), month:
+        current.getMonth() + 1, day: current.getDate() };
+    //config.maxDate = { year: 2099, month: 12, day: 31 };
+    config.outsideDays = 'hidden';
+
+
 
   }
 
