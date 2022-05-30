@@ -46,6 +46,7 @@ public class SecurityConfig {
 						.antMatchers("/assortment").permitAll()
 						.antMatchers("/validate").permitAll()
 						.antMatchers("/register").permitAll()
+						.antMatchers("/swagger-ui/*", "/v3/api-docs/**").permitAll()
 						.anyRequest().authenticated()
 				)
 				.csrf((csrf) -> csrf.disable()) // FIXME
