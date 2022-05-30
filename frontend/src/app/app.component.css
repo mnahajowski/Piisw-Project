@@ -34,6 +34,7 @@ footer {
   height: 50px;
   width: 100%;
 }
+
 footer p {
   position: absolute;
   top: 50%;
@@ -41,6 +42,10 @@ footer p {
   transform: translateY(-50%);
   color: white;
   font-size: 14px;
+}
+
+.app {
+  height: calc(100vh - 32px - 50px);
 }
 
 #app-name {
