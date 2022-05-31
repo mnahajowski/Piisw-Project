@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import pl.transport.backend.data.users.Passenger;
-import pl.transport.backend.dto.TicketValidationDto;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
