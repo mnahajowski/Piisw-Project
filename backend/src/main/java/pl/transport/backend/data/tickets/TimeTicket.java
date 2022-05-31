@@ -35,4 +35,11 @@ public class TimeTicket extends Ticket {
 		this.setValidationTime(validationTime);
 		return true;
 	}
+
+	@Override
+	public ValidityStatus getValidityStatus() {
+		if (validationTime == null) return ValidityStatus.NOT_YET_VALID;
+		if (isValid(null, LocalDateTime.now())) return ValidityStatus.VALID;
+		return ValidityStatus.EXPIRED;
+	}
 }

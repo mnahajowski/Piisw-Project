@@ -24,4 +24,10 @@ public abstract class Ticket {
 
 	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
 	public abstract boolean validate(String routeNumber, LocalDateTime validationTime);
+
+	public abstract ValidityStatus getValidityStatus();
+
+	public enum ValidityStatus {
+		VALID, MAYBE_VALID, EXPIRED, NOT_YET_VALID,
+	}
 }

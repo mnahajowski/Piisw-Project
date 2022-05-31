@@ -33,4 +33,12 @@ public class LongTimeTicket extends Ticket {
 	public boolean validate(String routeNumber, LocalDateTime validationTime) {
 		return false; // No operation, can't be validated
 	}
+
+	@Override
+	public ValidityStatus getValidityStatus() {
+		var now = LocalDateTime.now();
+		if (now.isBefore(startTime)) return ValidityStatus.NOT_YET_VALID;
+		if (isValid(null, now)) return ValidityStatus.VALID;
+		return ValidityStatus.EXPIRED;
+	}
 }

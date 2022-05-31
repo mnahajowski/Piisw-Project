@@ -36,4 +36,11 @@ public class SingleTicket extends Ticket {
 		this.setValidationRouteNumber(routeNumber);
 		return true;
 	}
+
+	@Override
+	public ValidityStatus getValidityStatus() {
+		if (validationTime == null) return ValidityStatus.NOT_YET_VALID;
+		if (LocalDateTime.now().isAfter(validationTime.plusHours(2))) return ValidityStatus.EXPIRED;
+		return ValidityStatus.MAYBE_VALID;
+	}
 }
