@@ -60,11 +60,13 @@ export class LongTimeTicketFormComponent implements OnInit {
     return date.toLocaleDateString();
   }
 
-  buyTicket() {
+  async buyTicket() {
     let date: Date = new Date(this.setData.year, this.setData.month-1, this.setData.day);
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(t => alert(JSON.stringify(t)));
+    await this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe();
+    this.router.navigate(["/myTickets"]);
+
   }
 }

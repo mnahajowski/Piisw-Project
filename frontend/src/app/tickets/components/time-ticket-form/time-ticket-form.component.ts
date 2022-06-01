@@ -39,8 +39,9 @@ export class TimeTicketFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buyTicket() {
-    return this.http.post<TicketType>('/api/ticket', this.ticket).subscribe(t => alert(JSON.stringify(t)));
+  async buyTicket() {
+    await this.http.post<TicketType>('/api/ticket', this.ticket).subscribe();
+    this.router.navigate(["/myTickets"]);
   }
 
 }
