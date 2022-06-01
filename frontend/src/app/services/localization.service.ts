@@ -63,7 +63,7 @@ export class LocalizationService {
       case 'MAYBE_VALID':
         return 'Być może aktualne';
       case 'NOT_YET_VALID':
-        return 'Jeszcze nieaktualny'
+        return 'Jeszcze nieaktualne'
       case 'EXPIRED':
         return 'Wygasłe';
     }

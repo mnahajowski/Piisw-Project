@@ -1,13 +1,8 @@
-
 body {
   font-family: "Open Sans", sans-serif;
-  /*height: 100vh;*/
   height: 100%;
-  /*background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;*/
   background-size: cover;
 }
-
-
 
 @keyframes spinner {
   0% {
@@ -29,7 +24,6 @@ body {
   width: 100%;
   min-height: 100%;
   padding: 20px;
-  /*background: rgba(4, 40, 68, 0.85);*/
 }
 
 .long-time-ticket {

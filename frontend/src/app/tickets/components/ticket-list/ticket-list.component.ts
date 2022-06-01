@@ -32,8 +32,6 @@ export class TicketListComponent implements OnInit{
   ngOnInit() {
     this.assortment = this.route.snapshot.data['tickets'];
 
-    console.log(this.tickets);
-    console.log(this.assortment?.ticketTypes);
     // @ts-ignore
     this.tickets = this.assortment?.ticketTypes;
     // @ts-ignore

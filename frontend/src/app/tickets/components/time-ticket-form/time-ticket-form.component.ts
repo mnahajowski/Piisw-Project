@@ -32,8 +32,6 @@ export class TimeTicketFormComponent implements OnInit {
       price: [''],
       time: ['']
     });
-    console.log(this.price);
-    console.log(this.discount);
   }
 
   ngOnInit(): void {

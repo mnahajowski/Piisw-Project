@@ -12,7 +12,7 @@ import { LocalizationService } from 'src/app/services/localization.service';
   templateUrl: './long-time-ticket-form.component.html',
   styleUrls: ['./long-time-ticket-form.component.css']
 })
-export class LongTimeTicketFormComponent implements OnInit {
+export class LongTimeTicketFormComponent {
 
   ticket: TicketType;
   time: number;
@@ -29,7 +29,6 @@ export class LongTimeTicketFormComponent implements OnInit {
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
     const now = new Date();
-    // const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate(), now.getHours());
     this.myGroup = new FormGroup({
       dateJoined: new FormControl()
     });
@@ -37,20 +36,11 @@ export class LongTimeTicketFormComponent implements OnInit {
     const current = new Date();
     config.minDate = { year: current.getFullYear(), month:
         current.getMonth() + 1, day: current.getDate() };
-    //config.maxDate = { year: 2099, month: 12, day: 31 };
     config.outsideDays = 'hidden';
-
-
-
   }
-
-  ngOnInit(): void {
-  }
-
 
   updateMyDate(newDate: any) {
     this.setData = newDate;
-    console.log(newDate);
   }
 
   getDate() {
