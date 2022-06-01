@@ -24,10 +24,8 @@
         <div class="card-body">
           <h5 class="card-title">{{localization.getLocalizedNameType(ticketType, false)}}</h5>
           <p class="card-text">Typ: {{localization.getLocalizedDiscount(ticket.discounted)}}</p>
-<!--          <div class="card-text" *ngIf="ticketType === '.SingleTicket'">Numer autobusu: </div>-->
           <p *ngIf="ticket.validitySeconds" class="card-text">Czas trwania: {{ localization.getLocalizedDuration(ticket.validitySeconds) }}</p>
           <p class="card-text">Cena: {{(ticket.price/100).toFixed(2)}}</p>
-<!--          <a href="#" class="btn btn-primary">Go somewhere</a>-->
           <button class="btn btn-primary" (click)="checkIfLoggedIn(ticket)">Kup bilet</button>
         </div>
       </div>

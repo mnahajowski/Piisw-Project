@@ -24,15 +24,10 @@ export class TicketListComponent implements OnInit{
   longTimeTickets: LongTimeTicket[] = [];
   timeTickets: TimeTicket[] = []
   ticketTypes: String[] = ['.TimeTicket', '.LongTimeTicket', '.SingleTicket' ]
-  // singleTicketForm: FormGroup;
-  // timeTicketForm: FormGroup;
-  // longTimeTicketForm: FormGroup;
 
   constructor(private readonly route: ActivatedRoute, private modalService: NgbModal,
     readonly localization: LocalizationService, private authService: AuthService, private router: Router) {
-    // this.singleTicketForm = this.fb.group({
-    //   busNumber: ['',Validators.required, Validators.pattern("^[0-9]*$")]
-    // });
+
   }
   ngOnInit() {
     this.assortment = this.route.snapshot.data['tickets'];
@@ -54,11 +49,6 @@ export class TicketListComponent implements OnInit{
     })
   }
 
-  getTicketType(ticket: TicketType) : Boolean{
-    console.log(ticket.type)
-    return true;
-  }
-
   findDiscounted(tickets: TicketType[] | undefined, shouldBeDiscounted: boolean): TicketType[] {
     // @ts-ignore
     return tickets.filter(ticket => ticket.discounted === shouldBeDiscounted)
@@ -67,9 +57,7 @@ export class TicketListComponent implements OnInit{
   findSpecificTickets(tickets: TicketType[], ticketType: String): TicketType[]{
     return tickets.filter(ticket => ticket.type === ticketType)
   }
-  // ngOnInit(): void {
-  //   console.log(this.tickets)
-  // }
+
 
   getTicketTypeFormComponent(ticketType: String) {
     if (ticketType === '.SingleTicket') {
