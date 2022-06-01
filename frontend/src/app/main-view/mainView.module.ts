@@ -7,7 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ClientReviewsComponent } from './components/client-reviews/client-reviews.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { MyAccountComponent } from './components/my-account/my-account.component';
+import { MyTicketsComponent } from './components/my-tickets/my-tickets.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     ClientReviewsComponent,
     LoginComponent,
     RegisterComponent,
-    MyAccountComponent
+    MyTicketsComponent
   ],
   exports: [
     WelcomePageComponent,

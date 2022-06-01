@@ -8,6 +8,8 @@ import {SingleTicketFormComponent} from "./tickets/components/single-ticket-form
 import {TimeTicketFormComponent} from "./tickets/components/time-ticket-form/time-ticket-form.component";
 import {LongTimeTicketFormComponent} from "./tickets/components/long-time-ticket-form/long-time-ticket-form.component";
 import {RegisterComponent} from "./main-view/components/register/register.component";
+import {MyTicketsComponent} from "./main-view/components/my-tickets/my-tickets.component";
+import {MyTicketsResolver} from "./main-view/resolvers/my-tickets.resolver";
 
 const routes: Routes = [
   {
@@ -45,6 +47,13 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'myTickets',
+    component: MyTicketsComponent,
+    resolve: {
+      myTickets: MyTicketsResolver
+    }
   }
 ];
 

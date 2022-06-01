@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RegistrationResult } from '../main-view/models/registration-result';
+import {ValidityStatus} from "../tickets/models/validity-status";
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,19 @@ export class LocalizationService {
         return 'Podano zbyt krótkie hasło.';
       case 'SUCCESS':
         return 'Pomyślnie utworzono konto.';
+    }
+  }
+
+  getLocalizedValidityStatus(ticketValidityStatus: ValidityStatus) : string {
+    switch(ticketValidityStatus) {
+      case 'VALID':
+        return 'Aktualne';
+      case 'MAYBE_VALID':
+        return 'Być może aktualne';
+      case 'NOT_YET_VALID':
+        return 'Jeszcze nie aktualny'
+      case 'EXPIRED':
+        return 'Wygasłe';
     }
   }
 }
