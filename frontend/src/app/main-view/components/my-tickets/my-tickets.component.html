@@ -1,0 +1,23 @@
+<article>
+  <div class="elem-container" *ngFor="let ticketStatus of myTickets">
+    <div class="one-elem" *ngIf="ticketStatus.length !== 0">
+      <p class="ticket-type-name"><b>{{localization.getLocalizedValidityStatus(ticketStatus[0].validityStatus)}}</b></p>
+      <div class="row">
+        <div class="elem-content col-sm-4" *ngFor="let ticket of ticketStatus">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{localization.getLocalizedNameType(ticket.type, false)}}</h5>
+              <p *ngIf="ticket.validitySeconds" class="card-text">Czas trwania:
+                {{ localization.getLocalizedDuration(ticket.validitySeconds) }}</p>
+              <p *ngIf="ticket.startTime" class="card-text">Czas rozpoczęcia: {{ getValidationDate(ticket.startTime)}}</p>
+              <p *ngIf="ticket.validationTime" class="card-text">Czas rozpoczęcia: {{ getValidationDate(ticket.validationTime)}}</p>
+              <p *ngIf="ticket.validationTime && ticket.validationRouteNumber"
+                 class="card-text">Linia numer: {{ ticket.validationRouteNumber}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+

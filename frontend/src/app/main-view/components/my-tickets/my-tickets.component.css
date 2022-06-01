@@ -1,0 +1,125 @@
+article {
+  padding-top: 92px;
+  margin: 0 32px;
+}
+
+.mgb-20, .mgb-20-all > * {
+  margin-bottom: 20px;
+}
+.wpx-100, .wpx-100-after:after {
+  width: 60px;
+}
+.img-round, .img-rel-round {
+  border-radius: 50%;
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: slategray;
+  margin: 0;
+  padding: 3em 1em;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.8em;
+  color: grey;
+  line-height: 1.4;
+}
+
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 90%;
+  grid-gap: 1em;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 2em 1em;
+  background: white;
+}
+@media all and (min-width: 600px) {
+  .grid {
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 20em));
+    justify-content: center;
+  }
+}
+.grid__figure {
+  display: grid;
+  grid-template-rows: 15em 1fr;
+  grid-gap: 1em;
+}
+.grid__figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.card {
+  background-color: #fff;
+  position: relative;
+  border: solid #be2121 3px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+.plan-type {
+  color: green;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.plan-cost {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+.slash {
+  font-weight: normal;
+}
+
+.plan-cycle {
+  font-size: 2rem;
+  font-variant: none;
+  border-bottom: none;
+  cursor: inherit;
+  text-decoration: none;
+}
+
+
+.card-body {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.card button {
+  background-color: #be2121;
+}
+
+.ticket-type-name {
+  font-size: 30px;
+  text-align: center;
+}
+
+.row {
+  justify-content: center;
+}
