@@ -50,13 +50,15 @@ export class LongTimeTicketFormComponent {
     return date.toLocaleDateString();
   }
 
-  async buyTicket() {
+  buyTicket() {
     let date: Date = new Date(this.setData.year, this.setData.month-1, this.setData.day);
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    await this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe();
-    this.router.navigate(["/myTickets"]);
+    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(_ => {
+      this.router.navigateByUrl("/myTickets");
+    });
+
 
   }
 }

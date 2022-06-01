@@ -25,9 +25,8 @@ export class SingleTicketFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async buyTicket() {
-    await this.http.post<TicketType>('/api/ticket', this.ticket).subscribe();
-    this.router.navigate(["/myTickets"]);
+  buyTicket() {
+    return this.http.post<TicketType>('/api/ticket', this.ticket).subscribe(_ => this.router.navigate(["/myTickets"]));
   }
 
 }
