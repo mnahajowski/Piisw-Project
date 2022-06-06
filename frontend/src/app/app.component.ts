@@ -14,7 +14,7 @@ export class AppComponent {
 
 
   constructor(private location: Location, private authService: AuthService) {
-    this.title = 'Spring Boot - Angular Application - Frontend';
+    this.title = 'Frontend';
     // this.mainView = true;
     this.mainView = location.path() === "";
   }
