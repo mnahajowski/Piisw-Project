@@ -20,7 +20,7 @@ public class SingleTicket extends TicketType {
 
 	@Override
 	public Optional<Ticket> create(Long startTime) {
-		return Optional.of(new pl.transport.backend.data.tickets.SingleTicket());
+		return Optional.of(new pl.transport.backend.data.tickets.SingleTicket(isDiscounted));
 	}
 
 	@Override

@@ -22,6 +22,16 @@ public abstract class Ticket {
 	@JsonIgnore
 	private Passenger owner;
 
+	private boolean discounted;
+
+	public Ticket() {
+
+	}
+
+	public Ticket(boolean discounted) {
+		this.discounted = discounted;
+	}
+
 	public abstract boolean isValid(String routeNumber, LocalDateTime atTime);
 	public abstract boolean validate(String routeNumber, LocalDateTime validationTime);
 

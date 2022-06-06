@@ -38,7 +38,7 @@ public class LongTimeTicket extends TicketType {
 		else if (day.isEqual(today)) {
 			time = now;
 		}
-		return Optional.of(new pl.transport.backend.data.tickets.LongTimeTicket(time, getValiditySeconds()));
+		return Optional.of(new pl.transport.backend.data.tickets.LongTimeTicket(isDiscounted, time, getValiditySeconds()));
 	}
 
 	@Override

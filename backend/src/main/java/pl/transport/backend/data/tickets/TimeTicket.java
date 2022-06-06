@@ -22,6 +22,11 @@ public class TimeTicket extends Ticket {
 	@Column(nullable = false)
 	Integer validitySeconds;
 
+	public TimeTicket(boolean discounted, int validitySeconds) {
+		super(discounted);
+		this.validitySeconds = validitySeconds;
+	}
+
 	@Override
 	public boolean isValid(String routeNumber, LocalDateTime atTime) {
 		if (validationTime == null) return false;

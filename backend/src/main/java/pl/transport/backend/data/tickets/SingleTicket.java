@@ -22,6 +22,10 @@ public class SingleTicket extends Ticket {
 	@Column(nullable = true)
 	String validationRouteNumber;
 
+	public SingleTicket(boolean discounted) {
+		super(discounted);
+	}
+
 	@Override
 	public boolean isValid(String routeNumber, LocalDateTime atTime) {
 		if (validationTime == null || validationRouteNumber == null) return false;

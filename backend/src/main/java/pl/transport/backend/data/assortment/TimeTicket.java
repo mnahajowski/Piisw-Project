@@ -23,7 +23,7 @@ public class TimeTicket extends TicketType {
 
 	@Override
 	public Optional<Ticket> create(Long startTime) {
-		return Optional.of(new pl.transport.backend.data.tickets.TimeTicket(null, getValiditySeconds()));
+		return Optional.of(new pl.transport.backend.data.tickets.TimeTicket(isDiscounted, getValiditySeconds()));
 	}
 
 	@Override
