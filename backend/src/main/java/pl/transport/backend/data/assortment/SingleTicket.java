@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import pl.transport.backend.data.tickets.Ticket;
 
 import javax.persistence.Entity;
+import java.util.Optional;
 
 @Entity(name = "SingleTicketType")
 @Data
@@ -18,8 +19,8 @@ public class SingleTicket extends TicketType {
 	}
 
 	@Override
-	public Ticket create(Long startTime) {
-		return new pl.transport.backend.data.tickets.SingleTicket();
+	public Optional<Ticket> create(Long startTime) {
+		return Optional.of(new pl.transport.backend.data.tickets.SingleTicket());
 	}
 
 	@Override

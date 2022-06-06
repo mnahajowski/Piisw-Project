@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import pl.transport.backend.data.tickets.Ticket;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -28,7 +29,7 @@ public abstract class TicketType {
 	int price;
 	boolean isDiscounted;
 
-	public abstract Ticket create(Long startTime);
+	public abstract Optional<Ticket> create(Long startTime);
 
 	public abstract boolean hasStartTime();
 }
