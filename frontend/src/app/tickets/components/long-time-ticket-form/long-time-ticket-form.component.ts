@@ -19,7 +19,7 @@ export class LongTimeTicketFormComponent {
   time: number;
   discount: String | null;
   price: Number;
-  model: NgbDateStruct | undefined;
+  model!: NgbDateStruct;
   myGroup: FormGroup;
   setData: any;
 
@@ -45,9 +45,8 @@ export class LongTimeTicketFormComponent {
   }
 
   getDate() {
-    // @ts-ignore
-    let date: Date = new Date(<number>this.model?.year, <number>(this.model?.month-1), this.model?.day);
-    date.setDate(date.getDate() + <number>this.time/60/60/24);
+    let date: Date = new Date(this.model.year, (this.model.month-1), this.model.day);
+    date.setDate(date.getDate() + this.time/60/60/24);
     return date.toLocaleDateString();
   }
 

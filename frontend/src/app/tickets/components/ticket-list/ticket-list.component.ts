@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { LocalizationService } from 'src/app/services/localization.service';
 import {AuthService} from "../../../main-view/services/auth.service";
+import { TicketTypeName } from '../../models/ticket-type-name';
 
 @Component({
   selector: 'app-ticket-list',
@@ -32,23 +33,20 @@ export class TicketListComponent implements OnInit{
   ngOnInit() {
     this.assortment = this.route.snapshot.data['tickets'];
 
-    // @ts-ignore
-    this.tickets = this.assortment?.ticketTypes;
-    // @ts-ignore
-    this.tickets.forEach((ticket: Ticket) => {
+    this.tickets = this.assortment!.ticketTypes;
+    this.tickets.forEach((ticket: TicketType) => {
       if (ticket.type === '.SingleTicket') {
-        this.singleTickets.push(ticket);
+        this.singleTickets.push(<SingleTicketType>ticket);
       } else if (ticket.type === '.LongTimeTicket') {
-        this.longTimeTickets.push(ticket);
+        this.longTimeTickets.push(<LongTimeTicketType>ticket);
       } else if (ticket.type === '.TimeTicket') {
-        this.timeTickets.push(ticket);
+        this.timeTickets.push(<TimeTicketType>ticket);
       }
 
     })
   }
 
-  findDiscounted(tickets: TicketType[] | undefined, shouldBeDiscounted: boolean): TicketType[] {
-    // @ts-ignore
+  findDiscounted(tickets: TicketType[], shouldBeDiscounted: boolean): TicketType[] {
     return tickets.filter(ticket => ticket.discounted === shouldBeDiscounted)
   }
 
@@ -57,15 +55,12 @@ export class TicketListComponent implements OnInit{
   }
 
 
-  getTicketTypeFormComponent(ticketType: String) {
-    if (ticketType === '.SingleTicket') {
-      return "/buySingleTicket";
+  getTicketTypeFormComponent(ticketType: TicketTypeName) {
+    switch (ticketType) {
+      case ".SingleTicket": return "/buySingleTicket";
+      case ".TimeTicket": return "/buyTimeTicket";
+      case ".LongTimeTicket": return "/buyLongTimeTicket";
     }
-    else if (ticketType === '.TimeTicket')
-      return "/buyTimeTicket";
-    else if (ticketType === '.LongTimeTicket')
-      return "/buyLongTimeTicket";
-    return null;
   }
 
   getTime(ticket: TicketType) {
@@ -78,7 +73,6 @@ export class TicketListComponent implements OnInit{
 
   checkIfLoggedIn(ticket: TicketType) {
     if (this.authService.isLoggedIn()) {
-      // @ts-ignore
       this.router.navigateByUrl(this.getTicketTypeFormComponent(ticket.type), {state: ticket}).then(r => console.log(r));
     } else if (this.authService.isLoggedOut()) {
       this.router.navigate(["/login"]).then(r => console.log(r));
