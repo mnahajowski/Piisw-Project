@@ -1,5 +1,5 @@
-import {TicketType} from "./ticket-type";
+import {Ticket} from "./ticket";
 
-export interface SingleTicket extends TicketType{
+export interface SingleTicket extends Ticket {
 
 }

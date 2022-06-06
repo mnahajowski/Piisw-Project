@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {TicketType} from "../../../tickets/models/ticket-type";
+import {Ticket} from "src/app/tickets/models/ticket";
 import {LocalizationService} from "../../../services/localization.service";
 import * as moment from "moment";
 
@@ -11,14 +11,14 @@ import * as moment from "moment";
 })
 export class MyTicketsComponent implements OnInit {
 
-  myTickets: Array<Array<TicketType>> = [[], [], [], []]
+  myTickets: Array<Array<Ticket>> = [[], [], [], []]
 
   constructor(private readonly route: ActivatedRoute, readonly localization: LocalizationService) {
   }
 
   ngOnInit(): void {
     console.log(this.route.snapshot.data['myTickets']);
-    this.route.snapshot.data['myTickets'].forEach((ticket: TicketType) => {
+    this.route.snapshot.data['myTickets'].forEach((ticket: Ticket) => {
       if (ticket.validityStatus === 'VALID') {
         this.myTickets[0].push(ticket);
       } else if (ticket.validityStatus === 'MAYBE_VALID') {

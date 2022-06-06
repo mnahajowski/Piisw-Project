@@ -3,9 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {Assortment} from "../../models/assortment";
 import {TicketType} from "../../models/ticket-type";
-import {SingleTicket} from "../../models/single-ticket";
-import {LongTimeTicket} from "../../models/long-time-ticket";
-import {TimeTicket} from "../../models/time-ticket";
+import {SingleTicketType} from "../../models/single-ticket-type";
+import {LongTimeTicketType} from "../../models/long-time-ticket-type";
+import {TimeTicketType} from "../../models/time-ticket-type";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { LocalizationService } from 'src/app/services/localization.service';
@@ -20,9 +20,9 @@ export class TicketListComponent implements OnInit{
 
   assortment: Assortment | undefined;
   tickets: TicketType[] = [];
-  singleTickets: SingleTicket[] = [];
-  longTimeTickets: LongTimeTicket[] = [];
-  timeTickets: TimeTicket[] = []
+  singleTickets: SingleTicketType[] = [];
+  longTimeTickets: LongTimeTicketType[] = [];
+  timeTickets: TimeTicketType[] = []
   ticketTypes: String[] = ['.TimeTicket', '.LongTimeTicket', '.SingleTicket' ]
 
   constructor(private readonly route: ActivatedRoute, private modalService: NgbModal,
@@ -35,7 +35,7 @@ export class TicketListComponent implements OnInit{
     // @ts-ignore
     this.tickets = this.assortment?.ticketTypes;
     // @ts-ignore
-    this.tickets.forEach((ticket: TicketType) => {
+    this.tickets.forEach((ticket: Ticket) => {
       if (ticket.type === '.SingleTicket') {
         this.singleTickets.push(ticket);
       } else if (ticket.type === '.LongTimeTicket') {

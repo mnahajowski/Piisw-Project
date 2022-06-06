@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import {TicketType} from "../../models/ticket-type";
+import { LongTimeTicketType } from '../../models/long-time-ticket-type';
+import { LongTimeTicket } from '../../models/long-time-ticket';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
 import { LocalizationService } from 'src/app/services/localization.service';
@@ -14,7 +15,7 @@ import { LocalizationService } from 'src/app/services/localization.service';
 })
 export class LongTimeTicketFormComponent {
 
-  ticket: TicketType;
+  ticket: LongTimeTicketType;
   time: number;
   discount: String | null;
   price: Number;
@@ -24,7 +25,7 @@ export class LongTimeTicketFormComponent {
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
     readonly localization: LocalizationService, private config: NgbDatepickerConfig) {
-    this.ticket = <TicketType>this.router.getCurrentNavigation()?.extras.state;
+    this.ticket = <LongTimeTicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
@@ -55,10 +56,8 @@ export class LongTimeTicketFormComponent {
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    return this.http.post<TicketType>('/api/ticket', this.ticket, {'params': params}).subscribe(_ => {
+    return this.http.post<LongTimeTicket>('/api/ticket', this.ticket, {'params': params}).subscribe(_ => {
       this.router.navigateByUrl("/myTickets");
     });
-
-
   }
 }
