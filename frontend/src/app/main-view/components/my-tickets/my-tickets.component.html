@@ -7,6 +7,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{localization.getLocalizedNameType(ticket.type, false)}}</h5>
+              <p class="card-text">Typ: {{ localization.getLocalizedDiscount(ticket.discounted) }}</p>
               <p *ngIf="ticket.validitySeconds" class="card-text">Czas trwania:
                 {{ localization.getLocalizedDuration(ticket.validitySeconds) }}</p>
               <p *ngIf="ticket.startTime" class="card-text">Czas rozpoczęcia: {{ getValidationDate(ticket.startTime)}}</p>
