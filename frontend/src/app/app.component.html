@@ -5,10 +5,11 @@
   </ul>
   <ul>
     <a [routerLink]="['']">Strona główna</a>
-    <a [routerLink]="['/ticket']">Bilety</a>
+    <a *ngIf="!isTicketer()" [routerLink]="['/ticket']">Bilety</a>
+    <a *ngIf="isTicketer()" [routerLink]="['/check']">Kontrola biletów</a>
     <a *ngIf="getExpiration() === null" [routerLink]="['/login'] ">Zaloguj się</a>
     <a *ngIf="getExpiration() === null" [routerLink]="['/register']">Zarejestruj się</a>
-    <a *ngIf="getExpiration() != null" [routerLink]="['/myTickets']">Moje konto</a>
+    <a *ngIf="getExpiration() != null && !isTicketer()" [routerLink]="['/myTickets']">Moje konto</a>
     <a *ngIf="getExpiration() != null" (click)="logout($event)">Wyloguj się</a>
   </ul>
 </nav>

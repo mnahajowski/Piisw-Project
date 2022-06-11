@@ -20,20 +20,27 @@ export class AuthService {
   }
 
   private setSession(token: string) {
-    const payload = token.split(".")[1];
-    const expiry = JSON.parse(atob(payload)).exp;
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    const expiry = payload.exp;
+    const scopes = payload.scope;
     localStorage.setItem('id_token', token);
     localStorage.setItem("expires_at", expiry);
+    localStorage.setItem("scopes", scopes);
   }
 
   logout() {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    localStorage.removeItem("scopes");
   }
 
   public isLoggedIn() {
     if(!this.getExpiration()) return false;
     return moment().isBefore(this.getExpiration());
+  }
+
+  public isTicketer(): boolean {
+    return localStorage.getItem("scopes")?.split(" ").includes("Ticketer") ?? false;
   }
 
   isLoggedOut() {

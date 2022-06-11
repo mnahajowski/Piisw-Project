@@ -27,6 +27,10 @@ export class AppComponent {
     return this.authService.getExp();
   }
 
+  isTicketer(): boolean {
+    return this.authService.isTicketer();
+  }
+
   logout($event: MouseEvent) {
     this.authService.logout();
     window.location.href = '/home';
