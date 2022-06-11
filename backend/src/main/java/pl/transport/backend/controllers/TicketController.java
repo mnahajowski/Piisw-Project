@@ -34,6 +34,12 @@ public class TicketController {
 				.orElse(false);
 	}
 
+	@GetMapping("/{id}")
+	public Ticket getById(@PathVariable long id) {
+		return ticketService.getById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	}
+
 	@PostMapping("")
 	public Ticket buyTicket(@RequestBody TicketType ticketType, @RequestParam(required = false) Long startTime) {
 		if (ticketType.hasStartTime() && startTime == null) {
