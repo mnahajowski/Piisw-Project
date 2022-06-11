@@ -3,6 +3,7 @@ import { ValidityStatus } from "./validity-status";
 
 export interface Ticket {
   type: TicketTypeName;
+  id: number;
   name: string;
   discounted: boolean;
   validitySeconds?: number;
