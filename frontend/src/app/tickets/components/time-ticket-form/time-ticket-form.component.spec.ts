@@ -6,6 +6,8 @@ import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {RouterTestingModule} from "@angular/router/testing";
 import {Location} from "@angular/common";
 import {TimeTicketType} from "../../models/time-ticket-type";
+import {ActivatedRoute} from "@angular/router";
+import {MyTicketsComponent} from "../../../main-view/components/my-tickets/my-tickets.component";
 
 describe('TimeTicketFormComponent', () => {
   let component: TimeTicketFormComponent;
@@ -17,10 +19,19 @@ describe('TimeTicketFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ TimeTicketFormComponent ]
+      declarations: [ TimeTicketFormComponent ],
+      providers:
+        [
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              snapshot: {params: {myTickets: {type: ".LongTimeTicket", price: 100, discounted: true, validitySeconds: 300, name: "test2"}}}
+            }
+          }
+        ]
     })
     .compileComponents();
-    ticket = {type: ".SingleTicket", price: 100, discounted: true, validitySeconds: 300, name: "test"};
+    ticket = {type: ".TimeTicket", price: 100, discounted: true, validitySeconds: 300, name: "test"};
   });
 
   beforeEach(() => {

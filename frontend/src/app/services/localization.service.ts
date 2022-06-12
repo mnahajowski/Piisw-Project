@@ -72,9 +72,9 @@ export class LocalizationService {
   getLocalizedValidity(valid: boolean): string {
     switch(valid) {
       case true:
-        return 'ważny';
+        return 'Ważny';
       case false:
-        return 'nieważny';
+        return 'Nieważny';
     }
   }
 }

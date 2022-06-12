@@ -7,6 +7,8 @@ import { LongTimeTicket } from '../../models/long-time-ticket';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
 import { LocalizationService } from 'src/app/services/localization.service';
+import {TimeTicketType} from "../../models/time-ticket-type";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-long-time-ticket-form',
@@ -24,8 +26,9 @@ export class LongTimeTicketFormComponent {
   setData: any;
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
-    readonly localization: LocalizationService, private config: NgbDatepickerConfig) {
-    this.ticket = <LongTimeTicketType>this.router.getCurrentNavigation()?.extras.state;
+    readonly localization: LocalizationService, private config: NgbDatepickerConfig, private location: Location) {
+    this.ticket = <LongTimeTicketType>location.getState();
+    // this.ticket = <LongTimeTicketType>this.router.getCurrentNavigation()?.extras.state;
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
@@ -55,8 +58,8 @@ export class LongTimeTicketFormComponent {
     const params = new HttpParams()
       .set('startTime', moment(date).unix());
 
-    return this.http.post<LongTimeTicket>('/api/ticket', this.ticket, {'params': params}).subscribe(_ => {
-      this.router.navigateByUrl("/myTickets");
+    return this.http.post<LongTimeTicket>('/api/ticket', this.ticket, {'params': params}).subscribe(ticket => {
+      this.router.navigateByUrl("/myTickets", {state: ticket});
     });
   }
 }

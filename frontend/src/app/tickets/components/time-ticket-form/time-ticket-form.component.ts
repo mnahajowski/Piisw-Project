@@ -46,8 +46,7 @@ export class TimeTicketFormComponent implements OnInit {
   }
 
   buyTicket() {
-    return this.http.post<TimeTicket>('/api/ticket', this.ticket).
-    subscribe(_ => this.router.navigate(["/myTickets"]));
+    return this.http.post<TimeTicket>('/api/ticket', this.ticket).subscribe(ticket => this.router.navigateByUrl("/myTickets", {state: ticket}));
   }
 
 }

@@ -5,6 +5,7 @@ import {SingleTicket} from "../../models/single-ticket";
 import {HttpClient} from "@angular/common/http";
 import { Router } from '@angular/router';
 import { LocalizationService } from 'src/app/services/localization.service';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-single-ticket-form',
@@ -17,8 +18,8 @@ export class SingleTicketFormComponent implements OnInit {
   discount: String | null;
   price: Number;
 
-  constructor(private http: HttpClient, private router: Router, private localization: LocalizationService) {
-    this.ticket = <SingleTicketType>router.getCurrentNavigation()?.extras.state;
+  constructor(private http: HttpClient, private router: Router, private localization: LocalizationService, private location: Location) {
+    this.ticket = <SingleTicketType>location.getState();
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
   }
@@ -27,7 +28,7 @@ export class SingleTicketFormComponent implements OnInit {
   }
 
   buyTicket() {
-    return this.http.post<SingleTicket>('/api/ticket', this.ticket).subscribe(_ => this.router.navigate(["/myTickets"]));
+    return this.http.post<SingleTicket>('/api/ticket', this.ticket).subscribe(ticket => this.router.navigateByUrl("/myTickets",{state: ticket}));
   }
 
 }

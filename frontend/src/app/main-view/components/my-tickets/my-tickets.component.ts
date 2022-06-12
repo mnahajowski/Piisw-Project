@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Ticket} from "src/app/tickets/models/ticket";
 import {LocalizationService} from "../../../services/localization.service";
 import * as moment from "moment";
+import {SingleTicketType} from "../../../tickets/models/single-ticket-type";
 
 @Component({
   selector: 'app-my-tickets',
@@ -11,9 +12,11 @@ import * as moment from "moment";
 })
 export class MyTicketsComponent implements OnInit {
 
-  myTickets: Array<Array<Ticket>> = [[], [], [], []]
+  myTickets: Array<Array<Ticket>> = [[], [], [], []];
+  newTicket: Ticket | undefined = undefined;
 
-  constructor(private readonly route: ActivatedRoute, readonly localization: LocalizationService) {
+  constructor(private readonly route: ActivatedRoute, private router: Router, readonly localization: LocalizationService) {
+    this.newTicket = <Ticket>router.getCurrentNavigation()?.extras.state;
   }
 
   ngOnInit(): void {
@@ -33,6 +36,13 @@ export class MyTicketsComponent implements OnInit {
 
   getValidationDate(date: number) {
     return moment.unix(date).toDate().toLocaleDateString() +"\t" + moment.unix(date).toDate().toLocaleTimeString();
+  }
+
+  checkIfNew(ticket: Ticket) {
+    if(this.newTicket === undefined || this.newTicket.id !== ticket.id)
+      return 'card';
+    else
+      return 'card newTicket';
   }
 
 }

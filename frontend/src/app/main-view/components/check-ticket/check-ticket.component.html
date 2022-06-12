@@ -14,7 +14,7 @@
       <button class="state" (click)="checkTicket()">Sprawdź bilet</button>
     </div>
     <div *ngIf="ticket">
-      Status biletu: {{ localization.getLocalizedValidity(ticketValid ?? false) }}
+      Status biletu: <b>{{ localization.getLocalizedValidity(ticketValid ?? false) }}</b>
       <br>
       {{ localization.getLocalizedNameType(ticket.type, false) }}
       {{ localization.getLocalizedDiscount(ticket.discounted).toLowerCase() }}

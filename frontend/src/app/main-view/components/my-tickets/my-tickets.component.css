@@ -123,3 +123,7 @@ figcaption {
 .row {
   justify-content: center;
 }
+
+.newTicket {
+  border: solid #21b9be 3px;
+}
