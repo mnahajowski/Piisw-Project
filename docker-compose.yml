@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=transport
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    restart: unless-stopped
+    security_opt:
+      - seccomp=unconfined # To run ARM64 image on 32-bit ARM dockerd
+  backend:
+    build: backend
+    ports:
+      - "8181:8080"
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+  frontend:
+    build: frontend
+    depends_on:
+      - backend
+    ports:
+      - "8282:80"
