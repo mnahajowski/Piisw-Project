@@ -8,6 +8,7 @@ import { ClientReviewsComponent } from './components/client-reviews/client-revie
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyTicketsComponent } from './components/my-tickets/my-tickets.component';
+import { CheckTicketComponent } from './components/check-ticket/check-ticket.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MyTicketsComponent } from './components/my-tickets/my-tickets.component
     ClientReviewsComponent,
     LoginComponent,
     RegisterComponent,
-    MyTicketsComponent
+    MyTicketsComponent,
+    CheckTicketComponent,
   ],
   exports: [
     WelcomePageComponent,

@@ -10,6 +10,7 @@ import {LongTimeTicketFormComponent} from "./tickets/components/long-time-ticket
 import {RegisterComponent} from "./main-view/components/register/register.component";
 import {MyTicketsComponent} from "./main-view/components/my-tickets/my-tickets.component";
 import {MyTicketsResolver} from "./main-view/resolvers/my-tickets.resolver";
+import {CheckTicketComponent} from './main-view/components/check-ticket/check-ticket.component';
 
 const routes: Routes = [
   {
@@ -54,7 +55,11 @@ const routes: Routes = [
     resolve: {
       myTickets: MyTicketsResolver
     }
-  }
+  },
+  {
+    path: 'check',
+    component: CheckTicketComponent,
+  },
 ];
 
 @NgModule({

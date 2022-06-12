@@ -1,0 +1,23 @@
+<div class="wrapper-form">
+  <form [formGroup]="form" class="check-ticket">
+    <fieldset>
+      <legend>Kontrola biletów</legend>
+
+      <div class="form-content">
+        <input name="routeNumber" formControlName="routeNumber" placeholder="Numer kursu" autofocus>
+        <i class="fa fa-bus"></i>
+        <input name="ticketNumber" formControlName="ticketNumber" placeholder="Numer biletu">
+        <i class="fa fa-ticket"></i>
+      </div>
+    </fieldset>
+    <div class="form-buttons">
+      <button class="state" (click)="checkTicket()">Sprawdź bilet</button>
+    </div>
+    <div *ngIf="ticket">
+      Status biletu: {{ localization.getLocalizedValidity(ticketValid ?? false) }}
+      <br>
+      {{ localization.getLocalizedNameType(ticket.type, false) }}
+      {{ localization.getLocalizedDiscount(ticket.discounted).toLowerCase() }}
+    </div>
+  </form>
+</div>

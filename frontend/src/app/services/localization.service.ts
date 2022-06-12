@@ -68,4 +68,13 @@ export class LocalizationService {
         return 'Wygasłe';
     }
   }
+
+  getLocalizedValidity(valid: boolean): string {
+    switch(valid) {
+      case true:
+        return 'ważny';
+      case false:
+        return 'nieważny';
+    }
+  }
 }
