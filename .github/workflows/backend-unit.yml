@@ -22,13 +22,13 @@ jobs:
           distribution: "temurin"
           cache: maven
       - name: Build with Maven
-        run: ./mvnw -B package
+        run: ./mvnw -B package -Dmaven.test.skip=true
       - name: Run unit tests
         run: ./mvnw -B test
       - name: Report JUnit results
         uses: mikepenz/action-junit-report@v3
         if: always() # Always run even if the previous step fails
         with:
-          report_paths: 'backend/target/surefire-reports/TEST-*.xml' # Relative to the root of the repository and not defaults.run.working-directory
+          report_paths: 'backend/**/target/surefire-reports/TEST-*.xml' # Relative to the root of the repository and not defaults.run.working-directory
           require_tests: true
           fail_on_failure: true
