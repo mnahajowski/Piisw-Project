@@ -27,8 +27,14 @@ export class LongTimeTicketFormComponent {
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
     readonly localization: LocalizationService, private config: NgbDatepickerConfig, private location: Location) {
-    this.ticket = <LongTimeTicketType>location.getState();
-    // this.ticket = <LongTimeTicketType>this.router.getCurrentNavigation()?.extras.state;
+    const t = <LongTimeTicketType>location.getState();
+    this.ticket = {
+      discounted: t.discounted,
+      name: t.name,
+      price: t.price,
+      type: t.type,
+      validitySeconds: t.validitySeconds
+    };
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;

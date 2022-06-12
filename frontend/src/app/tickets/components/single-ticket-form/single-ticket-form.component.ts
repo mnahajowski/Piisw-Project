@@ -19,7 +19,14 @@ export class SingleTicketFormComponent implements OnInit {
   price: Number;
 
   constructor(private http: HttpClient, private router: Router, private localization: LocalizationService, private location: Location) {
-    this.ticket = <SingleTicketType>location.getState();
+    const t = <SingleTicketType>location.getState();
+    this.ticket = {
+      discounted: t.discounted,
+      name: t.name,
+      price: t.price,
+      type: t.type,
+      validitySeconds: t.validitySeconds,
+    }
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
   }
