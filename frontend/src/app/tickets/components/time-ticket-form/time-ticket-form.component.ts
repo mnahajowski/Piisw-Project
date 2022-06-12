@@ -24,8 +24,14 @@ export class TimeTicketFormComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private http: HttpClient, private router: Router,
     readonly localization: LocalizationService, private location: Location) {
-    this.ticket = <TimeTicketType>location.getState();
-    // this.ticket = <TimeTicketType>router.getCurrentNavigation()?.extras.state;
+    const t = <TimeTicketType>location.getState();
+    this.ticket = {
+      discounted: t.discounted,
+      name: t.name,
+      price: t.price,
+      type: t.type,
+      validitySeconds: t.validitySeconds,
+    };
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
