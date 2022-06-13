@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
@@ -34,7 +34,7 @@ export class RegisterComponent {
         alert(this.localization.getLocalizedRegistrationResult(res));
         return;
       }
-      
+
       this.authService.login(data.username, data.password).subscribe(_ => {
         this.router.navigateByUrl("/");
       });

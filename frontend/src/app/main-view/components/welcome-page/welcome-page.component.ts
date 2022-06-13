@@ -8,11 +8,9 @@ import {Location, ViewportScroller} from "@angular/common";
 })
 export class WelcomePageComponent implements OnInit {
 
-
   constructor(private scroller: ViewportScroller) {
 
   }
-
 
   ngOnInit(): void {
   }
@@ -23,6 +21,5 @@ export class WelcomePageComponent implements OnInit {
     // @ts-ignore
     window.scrollTo({top: element.getBoundingClientRect().top + window.pageYOffset + yOffset, behavior: 'smooth'})
   }
-
 
 }

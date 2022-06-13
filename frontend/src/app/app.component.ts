@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import * as moment from "moment";
 import {AuthService} from "./main-view/services/auth.service";
 
 @Component({

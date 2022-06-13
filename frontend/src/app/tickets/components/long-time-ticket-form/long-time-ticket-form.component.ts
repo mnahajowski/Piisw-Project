@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbDatepickerConfig, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
@@ -7,7 +7,6 @@ import { LongTimeTicket } from '../../models/long-time-ticket';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import * as moment from "moment";
 import { LocalizationService } from 'src/app/services/localization.service';
-import {TimeTicketType} from "../../models/time-ticket-type";
 import {Location} from "@angular/common";
 
 @Component({
@@ -38,7 +37,6 @@ export class LongTimeTicketFormComponent {
     this.time = this.ticket.validitySeconds;
     this.discount = this.localization.getLocalizedDiscount(this.ticket.discounted);
     this.price = this.ticket.price;
-    const now = new Date();
     this.myGroup = new FormGroup({
       dateJoined: new FormControl()
     });

@@ -1,10 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup } from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {TimeTicketType} from "../../models/time-ticket-type";
 import {TimeTicket} from "../../models/time-ticket";
-import {TicketListService} from "../../services/ticket-list.service";
-import {shareReplay, tap} from "rxjs";
 import { Router } from '@angular/router';
 import { LocalizationService } from 'src/app/services/localization.service';
 import {Location, Time} from "@angular/common";

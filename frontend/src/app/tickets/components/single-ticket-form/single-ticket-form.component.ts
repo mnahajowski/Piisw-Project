@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SingleTicketType} from "../../models/single-ticket-type";
 import {SingleTicket} from "../../models/single-ticket";
 import {HttpClient} from "@angular/common/http";

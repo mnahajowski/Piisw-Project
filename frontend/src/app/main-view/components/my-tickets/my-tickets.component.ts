@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Ticket} from "src/app/tickets/models/ticket";
 import {LocalizationService} from "../../../services/localization.service";
 import * as moment from "moment";
-import {SingleTicketType} from "../../../tickets/models/single-ticket-type";
 
 @Component({
   selector: 'app-my-tickets',

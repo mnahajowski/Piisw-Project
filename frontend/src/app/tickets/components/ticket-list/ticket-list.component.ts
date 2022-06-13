@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Location} from "@angular/common";
 import {Assortment} from "../../models/assortment";
 import {TicketType} from "../../models/ticket-type";
 import {SingleTicketType} from "../../models/single-ticket-type";
 import {LongTimeTicketType} from "../../models/long-time-ticket-type";
 import {TimeTicketType} from "../../models/time-ticket-type";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { LocalizationService } from 'src/app/services/localization.service';
 import {AuthService} from "../../../main-view/services/auth.service";
